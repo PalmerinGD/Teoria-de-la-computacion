@@ -134,38 +134,9 @@ void sufijo()
     return;
 }
 
-char* subcadenaUtil(char string[], int left, int right)
-{
-    int newLength = right - left + 1;
-    char *newString = malloc(newLength + 1);
-    for(int i=left - 1; i < right; i++)
-        newString[i - left + 1] = string[i];
-    newString[newLength] = '\0';
-    return newString;
-}
-
 void subcadena()
 {
-    char cadena[MAX];
-    printf("Cadena: ");
-    scanf("%s", cadena);
-    int lengthString = length(cadena);
 
-    int left,right;
-    printf("Dame los rangos de la subcadena: ");
-    printf("Izquierdo: ");
-    scanf("%d", &left);
-    printf("Derecho: ");
-    scanf("%d", &right);
-
-    if(left <= 0 || right > lengthString)
-    {
-        printf("Intervalo fuera de rango\n");
-        return;
-    }
-    char *newString = subcadenaUtil(cadena, left, right);
-    printf("Subcadena: %s\n", newString);
-    return;
 }
 
 char* subsecuenciaUtil(char string[], int indices[], int n)
@@ -198,7 +169,7 @@ void subsecuencia()
     int cadenaLength = length(cadena);
     int n;
     printf("Ingrese la cantidad de caracteres a eliminar: ");
-    scanf("%d", &n);
+    scanf("%n", &n);
     if(n > cadenaLength) return;
     else if(n == cadenaLength)
     {
@@ -219,8 +190,6 @@ void subsecuencia()
         }
     }
     merge(indices, 0, n-1);
-    char* newString = subsecuenciaUtil(cadena, indices, n);
-    printf("Subsecuencia: %s\n", newString);
 }
 
 void invertirCadenaUtil(char string[])
