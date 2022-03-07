@@ -1,18 +1,8 @@
+#ifndef UTILS_H
+#define UTILS_H
 #include <stdio.h>
 #include <stdlib.h>
-#ifndef __MERGESORT_H__
-#include "mergeSort.h"
-#endif
-
 #define MAX 100
-
-
-typedef struct Lenguaje
-{
-    int id;
-    Nodo* cadenas;
-}Lenguaje;
-
 
 void printMenu();
 int readOption();
@@ -39,3 +29,4 @@ void inversion();
 
 char* potenciaUtil(char string[], int n);
 void potencia();
+#endif

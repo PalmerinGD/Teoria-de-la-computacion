@@ -12,12 +12,6 @@ void printMenu()
     printf("7. Potencia\n");
 }
 
-void DefinirLenguaje()
-{
-    
-
-}
-
 int readOption()
 {
     int option;
@@ -224,7 +218,7 @@ void subsecuencia()
             return;
         }
     }
-    merge(indices, 0, n-1);
+    //merge(indices, 0, n-1);
     char* newString = subsecuenciaUtil(cadena, indices, n);
     printf("Subsecuencia: %s\n", newString);
 }
