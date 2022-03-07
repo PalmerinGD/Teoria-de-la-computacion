@@ -27,7 +27,7 @@ int length(char string[])
     return total;
 }
 
-char* concatencaionUtil(char string1[], char string2[])
+char* concatenacionUtil(char string1[], char string2[])
 {
     int lengthString1 = length(string1);
     int lengthString2 = length(string2);
@@ -60,7 +60,7 @@ void concatenacion()
     printf("Cadena 2: ");
     fgets(cadena2, MAX, stdin);
 
-    char *newString = concatencaionUtil(cadena1, cadena2);
+    char *newString = concatenacionUtil(cadena1, cadena2);
     printf("Cadena resultado: %s\n", newString);
     printf("Tamanio: %d\n", length(newString));
 

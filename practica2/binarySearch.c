@@ -67,13 +67,46 @@ void Inorder(Nodo* root)
     Inorder(root->right);
 }
 
-Nodo* copy(Nodo* r1, Nodo* base)
+void copy(Nodo* r1, Nodo** base)
 {
-    if(r1 == NULL) return NULL;
-    if(search(base, r1->data) == NULL)
-        base = insert(base, r1->data);
-    else if(base == NULL)
-    base->left = copy(r1->left, base->left);
-    base->right = copy(r1->right, base->right);
-    return base;
+    if(r1 == NULL) return;
+    if(search(*base, r1->data) == NULL)
+        *base = insert(*base, r1->data);
+    copy(r1->left, base);
+    copy(r1->right, base);
+}
+
+void interseccion(Nodo* r1, Nodo* r2, Nodo** base)
+{
+    if(r1 == NULL) return;
+    if(search(r2, r1->data) != NULL)
+        *base = insert(*base, r1->data);
+    interseccion(r1->left, r2, base);
+    interseccion(r1->right, r2, base);
+}
+
+void MultiplicarUtil(Nodo** base, Nodo* r1, Data d1)
+{
+    if(r1 == NULL) return;
+    Data temp;
+    char *newWord;
+    newWord = concatenacionUtil(r1->data.palabra, d1.palabra);
+    int i = 0;
+    while(newWord[i] != '\0')
+    {
+        temp.palabra[i] = newWord[i];
+        i++;
+    }
+    temp.palabra[i] = '\0';
+    *base = insert(*base, temp);
+    MultiplicarUtil(base, r1->left,d1);
+    MultiplicarUtil(base, r1->right,d1);
+}
+
+void Multiplicar(Nodo* r1, Nodo* r2, Nodo** base)
+{
+    if(r1 == NULL) return;
+    MultiplicarUtil(base, r2, r1->data);
+    Multiplicar(r1->left, r2, base);
+    Multiplicar(r1->right, r2,base);
 }

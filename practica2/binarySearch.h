@@ -32,6 +32,9 @@ Nodo* createNodo(Data data);
 Nodo* insert(Nodo* root, Data data);
 Nodo* search(Nodo* root, Data data);
 void Inorder(Nodo* root);
-Nodo* copy(Nodo* r1, Nodo* base);
+void copy(Nodo* r1, Nodo** base);
+void interseccion(Nodo* r1, Nodo* r2, Nodo** base);
+void Multiplicar(Nodo* r1, Nodo* r2, Nodo** base);
+void MultiplicarUtil(Nodo** base, Nodo* r1, Data d1);
 
 #endif

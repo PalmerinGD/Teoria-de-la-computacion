@@ -10,11 +10,11 @@
 int main()
 {
     LinkedList lenguajes;
-    for(int j=0; j<5; j++)
+    for(int j=0; j<1; j++)
     {
         Lenguaje l;
         l.cadenas = NULL;
-        for(int i=0; i<2; i++)
+        for(int i=0; i<5; i++)
         {
             Data d;
             scanf("%s", d.palabra);
@@ -22,7 +22,7 @@ int main()
         }
         insertNodeList(&lenguajes, l);
     }
-    Lenguaje temp = unionLenguajes(lenguajes.front->lenguaje, lenguajes.front->next->lenguaje);
+    Lenguaje temp = potenciaLenguaje(lenguajes.front->lenguaje, 2);
     Inorder(temp.cadenas);
     printf("\n");
 }
