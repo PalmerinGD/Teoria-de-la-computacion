@@ -24,7 +24,7 @@ void subcadena();
 char* subsecuenciaUtil(char string[], int indices[], int n);
 void subsecuencia();
 
-void invertirCadenaUtil(char string[]);
+char* invertirCadenaUtil(char string[]);
 void inversion();
 
 char* potenciaUtil(char string[], int n);

@@ -76,6 +76,23 @@ void copy(Nodo* r1, Nodo** base)
     copy(r1->right, base);
 }
 
+void copyInvert(Nodo* r1, Nodo** base)
+{
+    if(r1 == NULL)return;
+    Data temp = r1->data;
+    char* newWord = invertirCadenaUtil(temp.palabra);
+    int i = 0;
+    while(newWord[i] != '\0')
+    {
+        temp.palabra[i] = newWord[i];
+        i++;
+    }
+    temp.palabra[i] = '\0';
+    *base = insert(*base, temp);
+    copyInvert(r1->left, base);
+    copyInvert(r1->right, base);
+}
+
 void interseccion(Nodo* r1, Nodo* r2, Nodo** base)
 {
     if(r1 == NULL) return;

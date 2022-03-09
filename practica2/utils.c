@@ -220,18 +220,15 @@ void subsecuencia()
     printf("Subsecuencia: %s\n", newString);
 }
 
-void invertirCadenaUtil(char string[])
+char* invertirCadenaUtil(char string[])
 {
     int lengthString = length(string);
-    int left = 0;
-    int right = lengthString - 1;
-    while(left < right)
-    {
-        char aux = string[right];
-        string[right--] = string[left];
-        string[left++] = aux;
-    }
-    return;
+    char* newString = malloc(lengthString + 1);
+    int j = 0;
+    for(int i=lengthString-1; i>=0; i--)
+        newString[j++] = string[i];
+    newString[lengthString] = '\0';
+    return newString;
 }
 
 void inversion()
@@ -239,8 +236,8 @@ void inversion()
     char cadena[MAX];
     printf("Cadena: ");
     scanf("%s", cadena);
-    invertirCadenaUtil(cadena);
-    printf("Cadena invertida: %s\n", cadena);
+    char* newString = invertirCadenaUtil(cadena);
+    printf("Cadena invertida: %s\n", newString);
     return;
 }
 

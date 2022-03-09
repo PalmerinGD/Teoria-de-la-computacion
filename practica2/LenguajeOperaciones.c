@@ -19,15 +19,22 @@ Lenguaje interseccionLenguajes(Lenguaje l1, Lenguaje l2)
 
 Lenguaje potenciaLenguaje(Lenguaje l1, int n)
 {
+    int flag = (n < 0 ? 1 : 0);
+    if(flag)n *= -1;
     Lenguaje res;
     res.cadenas = NULL;
     for(int i=1; i<=n; i++)
     {
-        if(i == 1)
+        if(i == 1 && !flag)
         {
             copy(l1.cadenas, &res.cadenas);
         }
-        else 
+        else if(i == 1 && flag)
+        {
+            copyInvert(l1.cadenas, &res.cadenas);
+            l1 = res;
+        }
+        else
         {
             Lenguaje aux;
             aux.cadenas = NULL;
