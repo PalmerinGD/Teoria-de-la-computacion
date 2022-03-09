@@ -43,7 +43,7 @@ Nodo* insert(Nodo* root, Data data)
         return root;
     }
 
-    return NULL;
+    return root;
 }
 
 

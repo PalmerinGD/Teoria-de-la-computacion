@@ -4,12 +4,9 @@ void printMenu()
 {
     printf("\r\r===Menu===\n");
     printf("1. Definir un lenguaje\n");
-    printf("2. Agregar cadena a un lenguaje\n");
-    printf("3. Sufijo\n");
-    printf("4. Subcadena\n");
-    printf("5. Subsecuencia\n");
-    printf("6. Inversion\n");
-    printf("7. Potencia\n");
+    printf("2. Interseccion de dos lenguajes\n");
+    printf("3. Union de dos lenguajes\n");
+    printf("4. Potencia\n");
 }
 
 int readOption()
