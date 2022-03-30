@@ -6,6 +6,7 @@
 
 #define MAX 100
 
+void clearBuffer();
 void printMenu();
 int readOption();
 
@@ -23,7 +24,7 @@ void sufijo();
 char* subcadenaUtil(char string[], int left, int right);
 void subcadena();
 
-char* subsecuenciaUtil(char string[], int indices[], int n);
+char* subsecuenciaUtil(char string[], char indices[], int n);
 void subsecuencia();
 
 void invertirCadenaUtil(char string[]);

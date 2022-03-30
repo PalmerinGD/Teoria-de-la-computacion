@@ -13,7 +13,7 @@ Lenguaje interseccionLenguajes(Lenguaje l1, Lenguaje l2)
 {
     Lenguaje res;
     res.cadenas = NULL;
-    interseccion(l1.cadenas, l2.cadenas, &res.cadenas);
+    Multiplicar(l1.cadenas, l2.cadenas, &res.cadenas);
     return res;
 }
 

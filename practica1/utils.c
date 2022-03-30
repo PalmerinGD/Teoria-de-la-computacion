@@ -1,5 +1,14 @@
 #include "utils.h"
 
+void clearBuffer()
+{
+    char c;
+    do
+    {
+        c = getchar();
+    } while (c != '\n' && c!=EOF);
+    
+}
 void printMenu()
 {
     printf("\r\r===Menu===\n");
@@ -55,10 +64,13 @@ void concatenacion()
     char cadena2[MAX];
 
 
+    clearBuffer();
     printf("Cadena 1: ");
-    fgets(cadena1, MAX, stdin);
+    scanf("%[^\n]", cadena1);
+    clearBuffer();
     printf("Cadena 2: ");
-    fgets(cadena2, MAX, stdin);
+    scanf("%[^\n]", cadena2);
+    clearBuffer();
 
     char *newString = concatencaionUtil(cadena1, cadena2);
     printf("Cadena resultado: %s\n", newString);
@@ -87,12 +99,15 @@ void prefijo()
 {
     char cadena[MAX];
     printf("Cadena: ");
-    scanf("%s", cadena);
+    clearBuffer();
+    scanf("%[^\n]", cadena);
 
     int n;
+    clearBuffer();
     printf("Tamanio: ");
     scanf("%d", &n);
 
+    clearBuffer();
     char *newString = prefijoUtil(cadena, n);
     printf("Cadena resultado: %s\n", newString);
 
@@ -122,12 +137,13 @@ void sufijo()
 {
     char cadena[MAX];
     printf("Cadena: ");
-    scanf("%s", cadena);
-
+    clearBuffer();
+    scanf("%[^\n]", cadena);
     int n;
     printf("Tamanio: ");
+    clearBuffer();
     scanf("%d", &n);
-
+    clearBuffer();
     char *newString = sufijoUtil(cadena, n);
     printf("Cadena resultado: %s\n", newString);
 
@@ -147,17 +163,20 @@ char* subcadenaUtil(char string[], int left, int right)
 void subcadena()
 {
     char cadena[MAX];
+    clearBuffer();
     printf("Cadena: ");
-    scanf("%s", cadena);
+    scanf("%[^\n]", cadena);
+    clearBuffer();
     int lengthString = length(cadena);
 
     int left,right;
     printf("Dame los rangos de la subcadena: ");
     printf("Izquierdo: ");
     scanf("%d", &left);
+    clearBuffer();
     printf("Derecho: ");
     scanf("%d", &right);
-
+    clearBuffer();
     if(left <= 0 || right > lengthString)
     {
         printf("Intervalo fuera de rango\n");
@@ -168,37 +187,35 @@ void subcadena()
     return;
 }
 
-char* subsecuenciaUtil(char string[], int indices[], int n)
+char* subsecuenciaUtil(char string[], char indices[], int n)
 {
     int lengthString = length(string);
-    int newLength = lengthString - n;
-    char* newString = malloc(newLength + 1);
+    char* newString = malloc(lengthString);
 
-    int j = 0;
-    int k = 0;
+    int temp = 0;
     for(int i=0; i<lengthString; i++)
     {
-        if(k == n)
-            newString[j++] = string[i];
-        else if(indices[k] - 1 != i)
-            newString[j++] = string[i];
-        else k++;
+        int flag = 1;
+        for(int j=0; j<n && flag; j++)
+            if(string[i] == indices[j])flag = 0;
+        if(flag)newString[temp++] = string[i];
     }
-
-    newString[newLength] = '\0';
+    newString[temp] = '\0';
     return newString;
 }
 
 void subsecuencia()
 {
     char cadena[MAX];
+    clearBuffer();
     printf("Cadena: ");
-    scanf("%s", cadena);
-    fflush(stdin);
+    scanf("%[^\n]", cadena);
+    clearBuffer();
     int cadenaLength = length(cadena);
     int n;
     printf("Ingrese la cantidad de caracteres a eliminar: ");
     scanf("%d", &n);
+    clearBuffer();
     if(n > cadenaLength) return;
     else if(n == cadenaLength)
     {
@@ -206,19 +223,14 @@ void subsecuencia()
         return;
     }
 
-    int* indices = (int*)malloc(sizeof(int) * n);
+    char* indices = malloc(n);
 
     for(int i=0; i<n; i++)
     {
-        printf("Posicion: ");
-        scanf("%d", (indices + i));
-        if(indices[i] > cadenaLength || indices[i] <= 0)
-        {
-            printf("Indice fuera de rango\n");
-            return;
-        }
+        printf("Caracter: ");
+        scanf("%c", (indices + i));
+        clearBuffer();
     }
-    merge(indices, 0, n-1);
     char* newString = subsecuenciaUtil(cadena, indices, n);
     printf("Subsecuencia: %s\n", newString);
 }
@@ -241,7 +253,9 @@ void inversion()
 {
     char cadena[MAX];
     printf("Cadena: ");
-    scanf("%s", cadena);
+    clearBuffer();
+    scanf("%[^\n]", cadena);
+    clearBuffer();
     invertirCadenaUtil(cadena);
     printf("Cadena invertida: %s\n", cadena);
     return;
@@ -271,14 +285,15 @@ char* potenciaUtil(char string[], int n)
 void potencia()
 {
     char cadena[MAX];
+    clearBuffer();
     printf("Cadena: ");
-    scanf("%s", cadena);
-    fflush(stdin);
+    scanf("%[^\n]", cadena);
+    clearBuffer();
 
     int n;
     printf("Potencia: ");
     scanf("%d", &n);
-    fflush(stdin);
+    clearBuffer();
 
     char * newString = potenciaUtil(cadena, n);
     printf("Cadena potencia: %s\n", newString);

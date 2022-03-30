@@ -1,5 +1,14 @@
 #include "utils.h"
 
+void clearBuffer()
+{
+    char c;
+    do
+    {
+        c = getchar();
+    } while (c != '\n' && c!=EOF);
+    
+}
 void printMenu()
 {
     printf("\r\r===Menu===\n");

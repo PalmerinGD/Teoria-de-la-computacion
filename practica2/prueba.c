@@ -42,12 +42,14 @@ void definirLenguaje(LinkedList* lenguajes)
     int total;
     printf("Cuantas elementos: ");
     scanf("%d", &total);
+    clearBuffer();
     Lenguaje l;
     l.cadenas = NULL;
     for(int i=0; i<total; i++)
     {
         Data d;
-        scanf("%s", d.palabra);
+        scanf("%[^\n]", d.palabra);
+        clearBuffer();
         l.cadenas = insert(l.cadenas, d);
     }
     insertNodeList(lenguajes, l);
@@ -58,7 +60,9 @@ void optionInterseccion(LinkedList* lenguaje)
 {
     int id1, id2;
     printf("Inserte dos ids: ");
+    clearBuffer();
     scanf("%d %d", &id1, &id2);
+    clearBuffer();
     NodeList* temp, *temp2;
     temp = lenguaje->front;
     temp2 = lenguaje->front;
@@ -79,7 +83,9 @@ void optionUnion(LinkedList* lenguaje)
 {
     int id1, id2;
     printf("Inserte dos ids: ");
+    clearBuffer();
     scanf("%d %d", &id1, &id2);
+    clearBuffer();
     NodeList* temp, *temp2;
     temp = lenguaje->front;
     temp2 = lenguaje->front;
@@ -100,7 +106,9 @@ void optionPotencia(LinkedList* lenguaje)
 {
     int id;
     printf("Inserte el id del lenguaje: ");
+    clearBuffer();
     scanf("%d", &id);
+    clearBuffer();
     NodeList* temp = lenguaje->front;
     while(temp!=NULL && temp->id != id)temp = temp->next;
     if(temp == NULL)

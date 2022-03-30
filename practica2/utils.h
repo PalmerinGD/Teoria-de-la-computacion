@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #define MAX 100
 
+void clearBuffer();
 void printMenu();
 int readOption();
 
