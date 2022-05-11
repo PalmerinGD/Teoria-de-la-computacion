@@ -5,7 +5,7 @@
 #include "graph.h"
 
 
-void dfs(graph* g, char* cad, int n, int ind, int * stack, int pos);
+int dfs(graph* g, char* cad, int n, int ind, int * stack, int pos);
 
 int main(int argc, char* argv[])
 {
@@ -31,11 +31,13 @@ int main(int argc, char* argv[])
 
     int pos = 0;
     int stack[1000];
-    dfs(g, str, 0, 0, stack, pos);
+    if(!dfs(g, str, 0, 0, stack, pos))
+        printf("No existen caminos\n");
+
     return 0;
 }
 
-void dfs(graph* g, char* cad, int n, int ind, int * stack, int pos)
+int dfs(graph* g, char* cad, int n, int ind, int * stack, int pos)
 {
     // Agrega el numero de estado al stack
     stack[pos] = n;
@@ -50,14 +52,18 @@ void dfs(graph* g, char* cad, int n, int ind, int * stack, int pos)
             else
                 printf("q%d ---> ", stack[j]);
         }
+        return 1;
     }
-
-    node *temp = g->array[n].front;
-    while (temp != NULL)
+    else
     {
-        if (temp->edge == cad[ind])
-            dfs(g, cad, temp->n, ind + 1, stack, pos + 1);
-        temp = temp->next;
+        int flag = 0;
+        node *temp = g->array[n].front;
+        while (temp != NULL)
+        {
+            if (temp->edge == cad[ind])
+                flag |= dfs(g, cad, temp->n, ind + 1, stack, pos + 1);
+            temp = temp->next;
+        }
+        return flag;
     }
-    return;
 }
